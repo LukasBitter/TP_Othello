@@ -1,0 +1,7 @@
+Lancer le jeu
+************************************************
+C:\Users\lukas.bitter\Documents\TP_Othello\Othelo\src>appletviewer tournoi.html
+
+Compiler les sources
+************************************************
+C:\Users\lukas.bitter\Documents\TP_Othello\Othelo\src>javac Participants\BitterDivernois\*.java
