@@ -33,7 +33,7 @@ public class Joueur extends Othello.Joueur{
 		gameBoard.addCoin(move, enemyID);
 		
 		//Get the best move (null if no move possible)
-		Move bestMove = AI.getBestMove(gameBoard, depth, playerID);
+		Move bestMove = new AI().getBestMove(gameBoard, depth, playerID);
 		
 		//Add player coin to the gameboard
 		gameBoard.addCoin(bestMove, playerID);
