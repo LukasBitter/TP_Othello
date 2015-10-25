@@ -23,6 +23,7 @@ public class Node {
 	private static int cmpt = 0;
 	public Node(Move move)
 	{
+		//System.out.println("NEW NODE");
 		this.evaluation = 0;
 		this.move = move;
 		childNodeList = new ArrayList<Node>();
