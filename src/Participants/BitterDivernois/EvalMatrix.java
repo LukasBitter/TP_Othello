@@ -6,6 +6,8 @@ public class EvalMatrix {
 
 		this.matrix = new int[i][j];
 		this.player = player;
+		this.column = i;
+		this.line = j;
 		init();
 
 		// Adapt corner-neighboor values depending if corner is taken
@@ -48,56 +50,76 @@ public class EvalMatrix {
 	 */
 	private void adaptCornerNeighboors() {
 		if(matrix[0][0] == this.player){
+			System.out.println("ADAPT CORNERNEIGHBOORS: 0, 0");
 			this.matrix[0][1] = this.matrix[1][0] = 150;
 			this.matrix[1][1] = 250;
 		}
 		if(matrix[7][7] == this.player){
+			System.out.println("ADAPT CORNERNEIGHBOORS: 7, 7");
 			this.matrix[6][7] = this.matrix[7][6] = 150;
 			this.matrix[6][6] = 250;
 		}
 		if(matrix[0][7] == this.player){
+			System.out.println("ADAPT CORNERNEIGHBOORS: 0, 7");
 			this.matrix[0][6] = this.matrix[1][7] = 150;
 			this.matrix[1][6] = 250;
 		}
 		if(matrix[7][0] == this.player){
+			System.out.println("ADAPT CORNERNEIGHBOORS: 7, 0");
 			this.matrix[7][1] = this.matrix[6][0] = 150;
 			this.matrix[6][1] = 250;
-		}
-		
+		}		
 	}
 
 	public void setMiddleGameValues() {
+		//System.out.println("MIDDLEGAME VALUES");
 		int i;
 		int j;
 		 
-		//First column
-		i = 0;
-		for(j = 0;i <= 7; i++){
-			matrix[i][j] += 250;
-		}
-
-		// Last column
-		i = 7;
-		for(j = 0;i <= 7; i++){
-			matrix[i][j] += 250;
+		//First and last column
+		for(j = 0;j <= 7; j++){
+			matrix[0][j] += 250;
+			matrix[7][j] += 250;
 		}
 		
-		// Top line
+		// Top and bottom line
 		j = 0;
 		for(i = 1; i <= 6; i++){
-			matrix[i][j] += 250;
+			matrix[i][0] += 250;
+			matrix[i][7] += 250;
 		}
-		// Bottom line
-		j = 7;
-		for(i = 1; i <= 6; i++){
-			matrix[i][j] += 250;
-		}
-
-		
 	}
+	
+	public void displayEvalMatrix(GameBoard gameboard) {
+		System.out.println("************ Eval Matrix ************");
+		System.out.println();
+		for (int l = 0; l < this.line; l++) {
+			for (int c = 0; c < this.column; c++) {
+				int coin = gameboard.getPlayerIDAtPos(l, c); 
+				if(coin != GameBoard.NO_COIN){
+					String playerColor;
+					if(coin == 0){
+						playerColor = "R";
+					}
+					else {
+						playerColor = "B";					
+					}
+					 
+					System.out.print(playerColor + "\t");
+				}
+				else{
+					System.out.print(this.matrix[c][l] + "\t");
+				}
+			}
+			System.out.print("\n");
+		}
+	}
+
 	
 	// TOOLS
 	private int[][] matrix;
 	private int player;
+	private int column;
+	private int line;
 
 }
