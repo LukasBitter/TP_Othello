@@ -42,13 +42,13 @@ public class Joueur extends Othello.Joueur{
 		gameBoard.addCoin(move, enemyID);
 		System.out.println("nextPlay: " + this.playerID);
 
-		/*try {
+		try {
 			System.in.read();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("no input!");
-		}*/
+		}
 		
 		// Get the best move (null if no move possible)
 		Move bestMove = new AI().getBestMove(gameBoard, depth, this.playerID);
@@ -61,13 +61,13 @@ public class Joueur extends Othello.Joueur{
 		// Add player coin to the gameboard
 		gameBoard.addCoin(bestMove, playerID);
 		
-		/*try {
+		try {
 			System.in.read();
 		} catch (IOException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 			System.out.println("no input!");
-		}*/
+		}
 		
 		// Return the played move
 		return bestMove;

@@ -105,14 +105,14 @@ public class AI {
 //				"MOVES = " + moves + " / EVALMATRIX = " + evalMatrix.getValue(node.getMove().i, node.getMove().j));
 		if (l_turn <= gameOpeningstate) {
 			// Game opening state
-			return 2 * moves + evalMatrix.getValue(node.getMove().i, node.getMove().j);
+			return (myCoins - hisCoins) + 3 * moves + evalMatrix.getValue(node.getMove().i, node.getMove().j);
 		} else if (l_turn > this.gameOpeningstate && l_turn < this.gameEndState) {
 			// Game middle state
 			evalMatrix.setMiddleGameValues();
-			return 2 * moves + evalMatrix.getValue(node.getMove().i, node.getMove().j);
+			return (myCoins - hisCoins) + moves + evalMatrix.getValue(node.getMove().i, node.getMove().j);
 		} else {
 			// Game end state
-			return (myCoins - hisCoins) * 10 + evalMatrix.getValue(node.getMove().i, node.getMove().j);
+			return (myCoins - hisCoins) * 5 + evalMatrix.getValue(node.getMove().i, node.getMove().j);
 		}
 	}
 
