@@ -72,19 +72,15 @@ public class EvalMatrix {
 	}
 
 	public void setMiddleGameValues() {
-		//System.out.println("MIDDLEGAME VALUES");
-		int i;
-		int j;
 		 
 		//First and last column
-		for(j = 0;j <= 7; j++){
+		for(int j = 0;j <= 7; j++){
 			matrix[0][j] += 250;
 			matrix[7][j] += 250;
 		}
 		
 		// Top and bottom line
-		j = 0;
-		for(i = 1; i <= 6; i++){
+		for(int i = 1; i <= 6; i++){
 			matrix[i][0] += 250;
 			matrix[i][7] += 250;
 		}
