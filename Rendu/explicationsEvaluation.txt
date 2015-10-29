@@ -1,0 +1,16 @@
+Tout d'abord, notre fonction d'évaluation utilise 4 éléments : 
+
+- Matrice d'évaluation donnant une valeur à chaque position
+- Mobilité (Différence entre "nos" déplacements possibles et les déplacements possibles de l'adversaire)
+- Matériel (Différence entre "nos" pièces sur le jeu et celles de l'adversaire)
+- Coins (Différence entre le nombre de coins possédés par "nous" et l'adversaire)
+
+Ces 4 éléments sont multipliés par des coefficiants, puis additionnés entre eux afin de donner l'évaluation du mouvement : 
+
+A * matrice + B * mobilité + C * matériel + D * coins 
+
+Nous avons également choisi d'adapter le coefficients en fonction du moment de la partie : 
+
+Etape d'ouverture (Moins de 12 pièces posées)
+Cours de partie
+Fin de partie
